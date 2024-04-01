@@ -1,4 +1,5 @@
 import ballerina/http;
+import ballerina/log;
 
 // Define a Ballerina service
 service /timesheet on new http:Listener(8080) {
@@ -32,5 +33,24 @@ service /timesheet on new http:Listener(8080) {
 
         // Return the JSON data
         return data;
+    }
+
+    // Resource to handle HTTP POST requests for creating new entries
+    resource function post addEntry(http:Caller caller, http:Request req) returns error? {
+        // Extract the JSON payload from the request
+        json payload = check req.getJsonPayload();
+        
+        // Log the JSON payload
+        log:printInfo("Received JSON payload: "+ payload.toString());
+
+
+        // Process the payload and add the new entry to the data array
+        // Assuming the payload structure is similar to the JSON data in the GET resource
+        // Logic to add the new entry to the data array goes here
+        // Return an appropriate response
+        http:Response response = new;
+        response.setPayload("Entry added successfully");
+        _ = check caller->respond(response);
+        return ();
     }
 }
