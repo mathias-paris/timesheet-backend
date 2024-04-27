@@ -1,0 +1,11 @@
+POST http://localhost:8080/timesheet/addEntry
+Content-Type: application/json
+{
+    "id": "1",
+    "date": "2024-04-01",
+    "project": "Project A",
+    "worklog": "Worklog for Project A",
+    "duration": 3
+}
+
+GET http://localhost:8080/timesheet/entries
