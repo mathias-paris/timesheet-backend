@@ -9,3 +9,11 @@ Content-Type: application/json
 }
 
 GET http://localhost:8080/timesheet/entries
+
+ curl -X POST   -H "Content-Type: application/json"   -d '{
+    "user_id": "11231231",
+    "date": "2024-04-01",
+    "project": "Project A",
+    "worklog": "Worklog for Project A",
+    "duration": 3
+  }'   http://localhost:8080/timesheet/entry -i
